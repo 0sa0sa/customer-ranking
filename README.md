@@ -126,3 +126,4 @@ curl -X POST http://localhost:3000/api/v1/ranking
 # 構築時の参考
 
 - https://reffect.co.jp/node-js/express-typescript
+- https://zenn.dev/yamo/articles/prisma-express-rest-api
