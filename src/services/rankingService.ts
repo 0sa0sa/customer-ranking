@@ -46,11 +46,13 @@ export class RankingService {
 
     // Date.
     const firstOrderDate =
-      orders
-        .sort((a, b) => {
-          return a.ordered_at.getTime() - b.ordered_at.getTime();
-        })[0]
-        .ordered_at.toDateString() ?? null;
+      orders.length === 0
+        ? null
+        : orders
+            .sort((a, b) => {
+              return a.ordered_at.getTime() - b.ordered_at.getTime();
+            })[0]
+            .ordered_at.toDateString() ?? null;
     const downGradDate = `${dayjs().year()}-12-31`;
 
     // Ranking & Payment.
@@ -133,7 +135,7 @@ export class RankingService {
     if (totalPayment < PAYMENT_FOR_SILVER) {
       return Ranking.BRONZE;
     } else if (totalPayment < PAYMENT_FOR_GOLD) {
-      return Ranking.SLIVER;
+      return Ranking.SILVER;
     } else {
       return Ranking.GOLD;
     }
