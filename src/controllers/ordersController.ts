@@ -15,7 +15,8 @@ router.get("/", async (req: Request, res: Response) => {
 
     res.json({ orders });
   } catch (e) {
-    throw new Error("can not get orders");
+    // TODO: error handling
+    // throw new Error("can not get orders");
   }
 });
 

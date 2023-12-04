@@ -13,7 +13,8 @@ router.post("/", async (req: Request, res: Response) => {
     await rankingService.updateTotalPayment(prisma);
     res.status(204).send();
   } catch (err) {
-    res.status(500).send();
+    // TODO: error handling
+    // res.status(500).send();
   }
 });
 
