@@ -34,7 +34,7 @@ async function main() {
       name: "Saburo",
       address: "Osaka",
       registered_at: new Date(),
-      total_payment_from_last_year: 100,
+      total_payment_from_last_year: 150,
     },
   });
 
@@ -46,7 +46,7 @@ async function main() {
       name: "Shiro",
       address: "Kyoto",
       registered_at: new Date(),
-      total_payment_from_last_year: 10000,
+      total_payment_from_last_year: 650,
     },
   });
 
@@ -58,7 +58,7 @@ async function main() {
       total_in_cents: 20,
       ordered_at: new Date(),
       order_id: "A5",
-      customer_id: 1,
+      customer_id: 4,
     },
   });
   await prisma.order.upsert({
@@ -68,17 +68,17 @@ async function main() {
       total_in_cents: 30,
       ordered_at: new Date(),
       order_id: "A4",
-      customer_id: 1,
+      customer_id: 4,
     },
   });
   await prisma.order.upsert({
     where: { id: 3 },
     update: {},
     create: {
-      total_in_cents: 99,
+      total_in_cents: 90,
       ordered_at: new Date(),
       order_id: "A3",
-      customer_id: 1,
+      customer_id: 4,
     },
   });
   await prisma.order.upsert({
@@ -88,17 +88,17 @@ async function main() {
       total_in_cents: 110,
       ordered_at: new Date(),
       order_id: "A2",
-      customer_id: 1,
+      customer_id: 4,
     },
   });
   await prisma.order.upsert({
     where: { id: 5 },
     update: {},
     create: {
-      total_in_cents: 20,
+      total_in_cents: 400,
       ordered_at: new Date(),
       order_id: "A1",
-      customer_id: 1,
+      customer_id: 4,
     },
   });
 }

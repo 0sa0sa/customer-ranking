@@ -14,9 +14,9 @@ CREATE TABLE "Customer" (
 CREATE TABLE "Payment" (
     "id" SERIAL NOT NULL,
     "amount" INTEGER NOT NULL,
-    "paidAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "paid_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "customer_id" INTEGER NOT NULL,
-    "orderId" INTEGER NOT NULL,
+    "order_id" TEXT NOT NULL,
 
     CONSTRAINT "Payment_pkey" PRIMARY KEY ("id")
 );
@@ -24,8 +24,9 @@ CREATE TABLE "Payment" (
 -- CreateTable
 CREATE TABLE "Order" (
     "id" SERIAL NOT NULL,
-    "totalInCents" INTEGER NOT NULL,
-    "orderedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "order_id" TEXT NOT NULL,
+    "total_in_cents" INTEGER NOT NULL,
+    "ordered_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "customer_id" INTEGER NOT NULL,
 
     CONSTRAINT "Order_pkey" PRIMARY KEY ("id")
@@ -33,3 +34,6 @@ CREATE TABLE "Order" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Customer_email_key" ON "Customer"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Order_order_id_key" ON "Order"("order_id");
