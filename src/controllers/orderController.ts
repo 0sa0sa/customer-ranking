@@ -21,6 +21,8 @@ type OrderPostRequest = {
 // POST /api/v1/order
 router.post("/", async (req: Request, res: Response) => {
   try {
+    // TODO: check CSRF token
+
     // TODO: need validation
     const { customerId, orderId, totalInCents, date: orderedAt } = req.body as OrderPostRequest;
 
@@ -42,7 +44,7 @@ router.post("/", async (req: Request, res: Response) => {
 
     res.json({ customer: updatedCustomer });
   } catch (e) {
-    // need rollback
+    // TODO: need rollback
   }
 });
 

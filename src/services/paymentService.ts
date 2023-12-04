@@ -82,12 +82,12 @@ export class PaymentService {
     }
     if (thisYearRanking === Ranking.BRONZE) {
       // NOTE: nextYearRanking must be only BRONZE
-      if (nextYearRanking === Ranking.SLIVER || nextYearRanking === Ranking.GOLD) {
+      if (nextYearRanking === Ranking.SILVER || nextYearRanking === Ranking.GOLD) {
         throw new Error("invalid nextYearRanking");
       }
       return 0;
     }
-    if (thisYearRanking === Ranking.SLIVER) {
+    if (thisYearRanking === Ranking.SILVER) {
       if (nextYearRanking === Ranking.GOLD) {
         throw new Error("invalid nextYearRanking");
       }
