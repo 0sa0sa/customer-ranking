@@ -7,7 +7,7 @@ import ordersController from "./controllers/ordersController";
 import rankingController from "./controllers/rankingController";
 
 const corsOptions = {
-  origin: "http://localhost:3001",
+  origin: "http://localhost:3000",
   optionsSuccessStatus: 200,
 };
 
