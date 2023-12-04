@@ -10,7 +10,6 @@ const orderService = new OrderService();
 router.get("/", async (req: Request, res: Response) => {
   try {
     // TODO: 認証
-
     const orders = await orderService.getAll(prisma);
     console.log("orders", orders);
 

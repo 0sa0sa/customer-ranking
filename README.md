@@ -1,9 +1,5 @@
 # customer-ranking
 
-# 構築時の参考資料
-
-- https://reffect.co.jp/node-js/express-typescript
-
 # DB操作方法
 
 ## DB立ち上げ
@@ -15,19 +11,25 @@ docker-compose up -d
 ## マイグレーション
 
 ```
-npm run prism:migrate
+npm run prisma:migrate
 ```
 
 ## データ流し込み
 
 ```
-npm run prism:seed
+npm run prisma:seed
 ```
 
 ## データベースの中身をGUIで確認
 
 ```
 npx prisma studio
+```
+
+## サービスの立ち上げ
+
+```
+npm run dev
 ```
 
 # 設計
@@ -120,3 +122,7 @@ curl -X POST http://localhost:3000/api/v1/ranking
 | address                      | TEXT      | 住所                   |
 | registered_at                | TIMESTAMP | 登録日                 |
 | total_payment_from_last_year | BIGINT    | この一年での合計支払額 |
+
+# 構築時の参考
+
+- https://reffect.co.jp/node-js/express-typescript

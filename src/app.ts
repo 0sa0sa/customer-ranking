@@ -16,9 +16,12 @@ app.use(express.json());
 app.use(cors(corsOptions));
 // TODO: 認証のミドルウェア導入 app.use()
 
+// TODO: エラーハンドリング
 app.use("/api/v1/customer", customerController);
 app.use("/api/v1/order", orderController);
-app.use("/api/v1/orders", ordersController);
 app.use("/api/v1/ranking", rankingController);
+
+// TODO: 本来は /api/v1/order/:id にするべき
+app.use("/api/v1/orders", ordersController);
 
 export default app;
