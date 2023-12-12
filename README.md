@@ -127,3 +127,7 @@ curl -X POST http://localhost:3000/api/v1/ranking
 
 - https://reffect.co.jp/node-js/express-typescript
 - https://zenn.dev/yamo/articles/prisma-express-rest-api
+
+1. order index が作られていなかったので
+2. order controller でロールバックの実装 transactionを切る
+3. 全体の再計算を呼び出すところ 定期実行する

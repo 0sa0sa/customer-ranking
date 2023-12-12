@@ -1,11 +1,12 @@
 import { Order, PrismaClient } from "@prisma/client";
+import { ITXClientDenyList } from "@prisma/client/runtime/library";
 
 export class OrderService {
   constructor() {}
 
   /**
    * validate
-   * 注文前のバリデーション（未実装） 
+   * 注文前のバリデーション（未実装）
    */
   public validate() {
     // TODO: validation
@@ -37,7 +38,7 @@ export class OrderService {
    * 指定した顧客IDの注文情報を追加
    */
   public async insert(
-    prisma: PrismaClient,
+    prisma: PrismaClient | Omit<PrismaClient, ITXClientDenyList>,
     totalInCents: number,
     orderedAt: string,
     customerId: number,

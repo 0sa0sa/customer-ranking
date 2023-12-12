@@ -32,19 +32,22 @@ router.post("/", async (req: Request, res: Response) => {
       throw new Error("can not order");
     }
 
-    // payment
-    paymentService.doPayment();
-    paymentService.insert(prisma, totalInCents, orderId, customerId);
+    await prisma.$transaction(async (tx) => {
+      // payment
+      // add await
+      paymentService.doPayment();
+      await paymentService.insert(tx, totalInCents, orderId, customerId);
 
-    // order
-    orderService.insert(prisma, totalInCents, orderedAt, customerId, orderId);
+      // order
+      await orderService.insert(tx, totalInCents, orderedAt, customerId, orderId);
 
-    // customer
-    const updatedCustomer = customerService.updateTotalPayment(prisma, customerId, totalInCents);
+      // customer
+      const updatedCustomer = customerService.updateTotalPayment(tx, customerId, totalInCents);
 
-    res.json({ customer: updatedCustomer });
+      res.json({ customer: updatedCustomer });
+    });
   } catch (e) {
-    // TODO: need rollback
+    // TODO: don't need rollback
   }
 });
 

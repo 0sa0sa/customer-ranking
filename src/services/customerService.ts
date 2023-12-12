@@ -1,4 +1,5 @@
 import { Customer, PrismaClient } from "@prisma/client";
+import { ITXClientDenyList } from "@prisma/client/runtime/library";
 
 export class CustomerService {
   constructor() {}
@@ -23,7 +24,11 @@ export class CustomerService {
    * updateTotalPayment
    * 指定した顧客IDの顧客情報の支払い総額を更新
    */
-  public async updateTotalPayment(prisma: PrismaClient, id: number, totalInCents: number): Promise<Customer> {
+  public async updateTotalPayment(
+    prisma: PrismaClient | Omit<PrismaClient, ITXClientDenyList>,
+    id: number,
+    totalInCents: number,
+  ): Promise<Customer> {
     const customer = await prisma.customer.findUnique({
       where: { id },
     });

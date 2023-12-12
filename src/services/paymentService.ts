@@ -1,4 +1,5 @@
 import { Order, PrismaClient } from "@prisma/client";
+import { ITXClientDenyList } from "@prisma/client/runtime/library";
 import dayjs from "dayjs";
 import { PAYMENT_FOR_GOLD, PAYMENT_FOR_SILVER, Ranking, TRanking } from "../constants/ranking";
 
@@ -31,7 +32,12 @@ export class PaymentService {
    * insert
    * 指定した顧客IDに対する支払い情報を追加
    */
-  public async insert(prisma: PrismaClient, amount: number, orderId: string, customerId: number) {
+  public async insert(
+    prisma: PrismaClient | Omit<PrismaClient, ITXClientDenyList>,
+    amount: number,
+    orderId: string,
+    customerId: number,
+  ) {
     await prisma.payment.create({
       data: { amount, paid_at: new Date(), order_id: orderId, customer_id: customerId },
     });
